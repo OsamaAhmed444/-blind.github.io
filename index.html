@@ -1,8 +1,8 @@
-  <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>منصة التعلم السمعي - للمكفوفين</title>
   <style>
     * {
@@ -10,68 +10,71 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
     
     body {
       background-color: #1a1a1a;
       color: #ffffff;
       line-height: 1.6;
-      padding: 20px;
-      max-width: 800px;
+      padding: 15px;
       margin: 0 auto;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
     
     header {
       text-align: center;
-      margin-bottom: 30px;
-      padding: 20px;
+      margin-bottom: 20px;
+      padding: 15px;
       border-bottom: 2px solid #4d4dff;
     }
     
     h1 {
-      font-size: 2.5rem;
+      font-size: 1.8rem;
       color: #4d4dff;
       margin-bottom: 10px;
     }
     
     h2 {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: #ffcc00;
-      margin: 20px 0;
+      margin: 15px 0;
     }
     
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: #ffcc00;
       margin-bottom: 10px;
     }
     
     p {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
     }
     
     .container {
       background-color: #2d2d2d;
-      border-radius: 15px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
     
     .btn {
       display: block;
       width: 100%;
-      padding: 18px;
-      margin: 15px 0;
-      font-size: 1.3rem;
+      padding: 16px;
+      margin: 12px 0;
+      font-size: 1.1rem;
       font-weight: bold;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.3s ease;
       background-color: #4d4dff;
       color: white;
+      touch-action: manipulation;
     }
     
     .btn:hover, .btn:focus {
@@ -90,16 +93,16 @@
     
     .lesson {
       background-color: #3d3d3d;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 15px 0;
-      border-right: 5px solid #4d4dff;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 12px 0;
+      border-right: 4px solid #4d4dff;
     }
     
     .lesson-title {
       color: #ffcc00;
-      font-size: 1.5rem;
-      margin-bottom: 10px;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
     }
     
     .hidden {
@@ -108,30 +111,30 @@
     
     .instructions {
       background-color: #004d00;
-      padding: 15px;
-      border-radius: 10px;
-      margin: 15px 0;
-      font-size: 1.1rem;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 12px 0;
+      font-size: 1rem;
     }
     
     .keyboard-nav {
       background-color: #333;
-      padding: 15px;
-      border-radius: 10px;
-      margin: 20px 0;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 15px 0;
     }
     
     .keyboard-nav h3 {
       color: #ffcc00;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     
     footer {
       text-align: center;
-      margin-top: 40px;
-      padding: 20px;
+      margin-top: 30px;
+      padding: 15px;
       border-top: 2px solid #4d4dff;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
     
     /* أنماط للتركيز على العناصر للمكفوفين */
@@ -142,55 +145,109 @@
     
     /* أنماط للرسائل */
     .message {
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 8px;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 6px;
       background-color: #004466;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
     
     /* أنماط جديدة للمساعد الذكي */
     .ai-assistant {
       background-color: #3a3a6d;
-      padding: 20px;
-      border-radius: 15px;
-      margin: 20px 0;
-      border-left: 5px solid #ffcc00;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 15px 0;
+      border-left: 4px solid #ffcc00;
     }
     
     .conversation {
-      max-height: 300px;
+      max-height: 200px;
       overflow-y: auto;
-      margin-bottom: 15px;
-      padding: 10px;
+      margin-bottom: 12px;
+      padding: 8px;
       background-color: #2a2a2a;
-      border-radius: 10px;
+      border-radius: 8px;
+      -webkit-overflow-scrolling: touch;
     }
     
     .user-msg {
       text-align: left;
       background-color: #0066cc;
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 10px;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 8px;
       max-width: 80%;
       margin-left: auto;
+      font-size: 1rem;
     }
     
     .ai-msg {
       text-align: right;
       background-color: #4d4dff;
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 10px;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 8px;
       max-width: 80%;
+      font-size: 1rem;
     }
     
     .typing-indicator {
       display: none;
-      padding: 10px;
+      padding: 8px;
       font-style: italic;
       color: #cccccc;
+      font-size: 1rem;
+    }
+    
+    /* تحسينات للهواتف */
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 1.6rem;
+      }
+      
+      h2 {
+        font-size: 1.3rem;
+      }
+      
+      h3 {
+        font-size: 1.2rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 14px;
+        font-size: 1rem;
+      }
+      
+      .container {
+        padding: 15px;
+      }
+      
+      .conversation {
+        max-height: 150px;
+      }
+    }
+    
+    /* تحسينات للوضع الأفقي على الهواتف */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .conversation {
+        max-height: 100px;
+      }
+    }
+    
+    /* تحسينات للشاشات الكبيرة */
+    @media (min-width: 768px) {
+      body {
+        max-width: 800px;
+      }
     }
   </style>
 </head>
@@ -290,22 +347,42 @@
 
   <footer>
     <p>©  2025 منصة التعلم السمعي - تم التطوير لدعم المكفوفين</p>
-    <p>جميع الحقوق محفوظة</p>
-    <p> للتواصل مع المطور: <a href="mailto:osamaalnady00@gmail.com"> Eng.Osama Ahmed</a></p>
-
+    <p>تواصل  مع المطور: <a href="mailto:osamaalnady00@gmail.com">Eng.Osama Ahmed</a></p>
   </footer>
 
   <script>
+    // التحقق من دعم APIs
+    const speechSupport = 'speechSynthesis' in window;
+    const recognitionSupport = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
+    
+    if (!speechSupport) {
+      alert('عذرًا، متصفحك لا يدعم ميزة التحدث الصوتي. نوصي باستخدام متصفح حديث مثل Chrome أو Edge.');
+    }
+    
+    if (!recognitionSupport) {
+      document.getElementById('listenBtn').disabled = true;
+      document.getElementById('listenBtn').innerText = 'التعرف على الصوت غير مدعوم';
+    }
+    
     // دالة التحدث (Text-to-Speech)
     function speak(text, callback) {
+      if (!speechSupport) {
+        alert("ميزة الصوت غير مدعومة في متصفحك: " + text);
+        if (callback) callback();
+        return;
+      }
+      
       // إظهار الرسالة على الشاشة للمستخدمين ضعاف البصر
       const messageDiv = document.getElementById('message');
       messageDiv.textContent = text;
       messageDiv.classList.remove('hidden');
       
+      // إيقاف أي كلام سابق
+      window.speechSynthesis.cancel();
+      
       let utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "ar-SA";
-      utterance.rate = 0.9; 
+      utterance.rate = 0.9; //速度稍慢以便于理解
       
       utterance.onend = function() {
         if (callback) callback();
@@ -315,14 +392,25 @@
         }, 3000);
       };
       
+      utterance.onerror = function(event) {
+        console.error('خطأ في التحدث:', event);
+        if (callback) callback();
+      };
+      
       speechSynthesis.speak(utterance);
     }
     
     // دالة التعرف على الكلام (Speech-to-Text)
     function startListening() {
+      if (!recognitionSupport) {
+        alert("التعرف على الصوت غير مدعوم في متصفحك. يرجى استخدام Chrome أو Edge.");
+        return;
+      }
+      
       speak("أنا أستمع لك الآن، تفضل بالتحدث", function() {
         let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         recognition.lang = "ar-SA";
+        recognition.continuous = false;
         
         recognition.onresult = function(event) {
           let userSpeech = event.results[0][0].transcript;
@@ -334,7 +422,12 @@
         };
         
         recognition.onerror = function(event) {
+          console.error('خطأ في التعرف على الصوت:', event.error);
           speak("عذرًا، لم أستطع فهم ما قلته. هل يمكنك التكرار؟");
+        };
+        
+        recognition.onnomatch = function() {
+          speak("عذرًا، لم أتعرف على أي كلام. هل يمكنك التكرار؟");
         };
         
         recognition.start();
@@ -349,12 +442,18 @@
         showLessons();
         speak("فتحت قائمة الدروس لك. اختر الدرس الذي تريد البدء به.");
       } 
-      else if (command.includes("رئيس") || command.includes("رئيسية")) {
+      else if (command.includes("رئيس") || command.includes("رئيسية") || command.includes("الرئيسية")) {
         backToWelcome();
         speak("عدت إلى الصفحة الرئيسية.");
       }
       else if (command.includes("شكل") || command.includes("أشكال")) {
         startLesson(1);
+      }
+      else if (command.includes("لون") || command.includes("ألوان")) {
+        startLesson(2);
+      }
+      else if (command.includes("اتجاه") || command.includes("اتجاهات")) {
+        startLesson(3);
       }
       else if (command.includes("مساعد") || command.includes("مساعدة")) {
         startAIConversation();
@@ -403,9 +502,15 @@
     
     // وظائف المساعد الذكي
     function startAIConversation() {
+      if (!recognitionSupport) {
+        alert("التعرف على الصوت غير مدعوم في متصفحك. يرجى استخدام Chrome أو Edge.");
+        return;
+      }
+      
       speak("مرحبًا، أنا المساعد الذكي. كيف يمكنني مساعدتك في التعلم اليوم؟", function() {
         let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         recognition.lang = "ar-SA";
+        recognition.continuous = false;
         
         recognition.onresult = function(event) {
           let userSpeech = event.results[0][0].transcript;
@@ -416,6 +521,7 @@
         };
         
         recognition.onerror = function(event) {
+          console.error('خطأ في التعرف على الصوت:', event.error);
           speak("عذرًا، لم أستطع فهم ما قلته. هل يمكنك التكرار؟");
         };
         
@@ -498,6 +604,15 @@
           if (e.key === 'Enter') {
             this.click();
           }
+        });
+        
+        // تحسين للشاشات التي تعمل باللمس
+        button.addEventListener('touchstart', function() {
+          this.style.transform = 'scale(0.98)';
+        });
+        
+        button.addEventListener('touchend', function() {
+          this.style.transform = '';
         });
       });
       
