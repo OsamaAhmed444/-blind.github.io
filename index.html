@@ -1,0 +1,511 @@
+  <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة التعلم السمعي - للمكفوفين</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-bottom: 2px solid #4d4dff;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      color: #4d4dff;
+      margin-bottom: 10px;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      color: #ffcc00;
+      margin: 20px 0;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .container {
+      background-color: #2d2d2d;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      margin: 15px 0;
+      font-size: 1.3rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: #4d4dff;
+      color: white;
+    }
+    
+    .btn:hover, .btn:focus {
+      background-color: #6666ff;
+      transform: scale(1.02);
+      outline: 3px solid #ffcc00;
+    }
+    
+    .btn-secondary {
+      background-color: #ff6600;
+    }
+    
+    .btn-secondary:hover, .btn-secondary:focus {
+      background-color: #ff8533;
+    }
+    
+    .lesson {
+      background-color: #3d3d3d;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 15px 0;
+      border-right: 5px solid #4d4dff;
+    }
+    
+    .lesson-title {
+      color: #ffcc00;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .instructions {
+      background-color: #004d00;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      font-size: 1.1rem;
+    }
+    
+    .keyboard-nav {
+      background-color: #333;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+    
+    .keyboard-nav h3 {
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 2px solid #4d4dff;
+      font-size: 1rem;
+    }
+    
+    /* أنماط للتركيز على العناصر للمكفوفين */
+    button:focus, a:focus {
+      outline: 3px solid #ffcc00;
+      outline-offset: 2px;
+    }
+    
+    /* أنماط للرسائل */
+    .message {
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      background-color: #004466;
+      font-size: 1.2rem;
+    }
+    
+    /* أنماط جديدة للمساعد الذكي */
+    .ai-assistant {
+      background-color: #3a3a6d;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      border-left: 5px solid #ffcc00;
+    }
+    
+    .conversation {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #2a2a2a;
+      border-radius: 10px;
+    }
+    
+    .user-msg {
+      text-align: left;
+      background-color: #0066cc;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 10px;
+      max-width: 80%;
+      margin-left: auto;
+    }
+    
+    .ai-msg {
+      text-align: right;
+      background-color: #4d4dff;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 10px;
+      max-width: 80%;
+    }
+    
+    .typing-indicator {
+      display: none;
+      padding: 10px;
+      font-style: italic;
+      color: #cccccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>منصة التعلم السمعي</h1>
+    <p>منصة تعليمية مصممة خصيصًا للمكفوفين وضعاف البصر</p>
+  </header>
+
+  <main>
+    <section id="welcome" class="container">
+      <h2>مرحبًا بك في منصة التعلم السمعي</h2>
+      <p>هذه المنصة مصممة خصيصًا لتلبية احتياجات المكفوفين وضعاف البصر، حيث يمكنك التعلم من خلال الصوت والتفاعل الصوتي.</p>
+      
+      <div class="instructions">
+        <p>لتسهيل التصفح: استخدم زر Tab للتنقل بين الأزرار، واضغط Enter لتنشيط الزر المحدد.</p>
+      </div>
+      
+      <button class="btn" onclick="startWelcome()" aria-label="بدء الترحيب والتعليمات">
+        بدء الترحيب والتعليمات
+      </button>
+      
+      <button class="btn" onclick="showLessons()" aria-label="استعراض الدروس المتاحة">
+        استعراض الدروس المتاحة
+      </button>
+    </section>
+
+    <section id="lessons" class="container hidden">
+      <h2>الدروس التعليمية</h2>
+      
+      <div class="lesson">
+        <h3 class="lesson-title">الدرس الأول: التعرف على الأشكال</h3>
+        <p>في هذا الدرس، ستتعلم كيفية التعرف على الأشكال الهندسية الأساسية من خلال الوصف الصوتي.</p>
+        <button class="btn" onclick="startLesson(1)" aria-label="بدء الدرس الأول عن الأشكال">
+          بدء الدرس
+        </button>
+      </div>
+      
+      <div class="lesson">
+        <h3 class="lesson-title">الدرس الثاني: الألوان وملمس الأشياء</h3>
+        <p>ستتعلم في هذا الدرس كيفية تمييز الألوان من خلال أوصافها وملمس الأشياء المختلفة.</p>
+        <button class="btn" onclick="startLesson(2)" aria-label="بدء الدرس الثاني عن الألوان">
+          بدء الدرس
+        </button>
+      </div>
+      
+      <div class="lesson">
+        <h3 class="lesson-title">الدرس الثالث: الاتجاهات والمواقع</h3>
+        <p>هذا الدرس سيعلمك كيفية فهم الاتجاهات والمواقع في الفراغ من خلال التوجيه الصوتي.</p>
+        <button class="btn" onclick="startLesson(3)" aria-label="بدء الدرس الثالث عن الاتجاهات">
+          بدء الدرس
+        </button>
+      </div>
+      
+      <button class="btn btn-secondary" onclick="backToWelcome()" aria-label="العودة إلى الصفحة الرئيسية">
+        العودة إلى الرئيسية
+      </button>
+    </section>
+
+    <section id="interaction" class="container">
+      <h2>التفاعل الصوتي</h2>
+      <p>يمكنك استخدام الأزرار أدناه للتفاعل صوتيًا مع المنصة:</p>
+      
+      <button class="btn" id="speakBtn" onclick="speak('مرحبًا! هل تريد البدء في الدرس؟')" aria-label="استمع إلى رسالة ترحيب">
+        استمع إلى رسالة ترحيب
+      </button>
+      
+      <button class="btn" id="listenBtn" onclick="startListening()" aria-label="التحدث إلى المنصة">
+        التحدث إلى المنصة
+      </button>
+      
+      <div id="message" class="message hidden" aria-live="polite">
+        <!-- سيتم عرض الرسائل هنا -->
+      </div>
+    </section>
+
+    <!-- قسم المساعد الذكي الجديد -->
+    <section id="ai-assistant" class="ai-assistant">
+      <h2>المساعد الذكي للتعلم</h2>
+      <p>يمكنك التحدث مع المساعد الذكي لمساعدتك في عملية التعلم والإجابة على أسئلتك.</p>
+      
+      <div class="conversation" id="conversation">
+        <div class="ai-msg">مرحبًا! أنا مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟</div>
+      </div>
+      
+      <div class="typing-indicator" id="typing">المساعد يكتب...</div>
+      
+      <button class="btn" onclick="startAIConversation()" aria-label="بدء محادثة مع المساعد الذكي">
+        التحدث مع المساعد
+      </button>
+      
+      <button class="btn btn-secondary" onclick="clearConversation()" aria-label="مسح المحادثة">
+        مسح المحادثة
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    <p>©  2025 منصة التعلم السمعي - تم التطوير لدعم المكفوفين</p>
+    <p>جميع الحقوق محفوظة</p>
+    <p> للتواصل مع المطور: <a href="mailto:osamaalnady00@gmail.com"> Eng.Osama Ahmed</a></p>
+
+  </footer>
+
+  <script>
+    // دالة التحدث (Text-to-Speech)
+    function speak(text, callback) {
+      // إظهار الرسالة على الشاشة للمستخدمين ضعاف البصر
+      const messageDiv = document.getElementById('message');
+      messageDiv.textContent = text;
+      messageDiv.classList.remove('hidden');
+      
+      let utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "ar-SA";
+      utterance.rate = 0.9; 
+      
+      utterance.onend = function() {
+        if (callback) callback();
+        // إخفاء الرسالة بعد انتهاء التحدث
+        setTimeout(() => {
+          messageDiv.classList.add('hidden');
+        }, 3000);
+      };
+      
+      speechSynthesis.speak(utterance);
+    }
+    
+    // دالة التعرف على الكلام (Speech-to-Text)
+    function startListening() {
+      speak("أنا أستمع لك الآن، تفضل بالتحدث", function() {
+        let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = "ar-SA";
+        
+        recognition.onresult = function(event) {
+          let userSpeech = event.results[0][0].transcript;
+          const response = "سمعتك تقول: " + userSpeech;
+          speak(response);
+          
+          // معالجة الأوامن الصوتية البسيطة
+          processVoiceCommand(userSpeech);
+        };
+        
+        recognition.onerror = function(event) {
+          speak("عذرًا، لم أستطع فهم ما قلته. هل يمكنك التكرار؟");
+        };
+        
+        recognition.start();
+      });
+    }
+    
+    // معالجة الأوامن الصوتية
+    function processVoiceCommand(command) {
+      command = command.toLowerCase();
+      
+      if (command.includes("درس") || command.includes("دروس")) {
+        showLessons();
+        speak("فتحت قائمة الدروس لك. اختر الدرس الذي تريد البدء به.");
+      } 
+      else if (command.includes("رئيس") || command.includes("رئيسية")) {
+        backToWelcome();
+        speak("عدت إلى الصفحة الرئيسية.");
+      }
+      else if (command.includes("شكل") || command.includes("أشكال")) {
+        startLesson(1);
+      }
+      else if (command.includes("مساعد") || command.includes("مساعدة")) {
+        startAIConversation();
+      }
+      else {
+        setTimeout(() => {
+          speak("هل تريد أن أفتح قائمة الدروس لك؟ قل 'دروس' لفتحها.");
+        }, 1000);
+      }
+    }
+    
+    // وظائف التنقل بين الصفحات
+    function startWelcome() {
+      speak("مرحبًا بك في منصة التعلم السمعي. هذه المنصة مصممة خصيصًا للمكفوفين وضعاف البصر. يمكنك التنقل بين الخيارات باستخدام مفتاح Tab، والضغط على Enter لتنشيط الخيار. هناك ثلاثة دروس متاحة: التعرف على الأشكال، والألوان وملمس الأشياء، والاتجاهات والمواقع. قل 'دروس' لفتح قائمة الدروس.");
+    }
+    
+    function showLessons() {
+      document.getElementById('welcome').classList.add('hidden');
+      document.getElementById('lessons').classList.remove('hidden');
+      speak("هذه هي قائمة الدروس المتاحة. الدرس الأول: التعرف على الأشكال. الدرس الثاني: الألوان وملمس الأشياء. الدرس الثالث: الاتجاهات والمواقع. اختر الدرس الذي تريد البدء به.");
+    }
+    
+    function backToWelcome() {
+      document.getElementById('lessons').classList.add('hidden');
+      document.getElementById('welcome').classList.remove('hidden');
+    }
+    
+    // بدء الدروس
+    function startLesson(lessonNumber) {
+      switch(lessonNumber) {
+        case 1:
+          speak("بدأت الدرس الأول: التعرف على الأشكال. الدائرة هي شكل مستدير ليس له زوايا. المربع له أربعة أضلاع متساوية وأربع زوايا قائمة. المستطيل يشبه المربع ولكن له ضلعان أطول من الآخرين. المثلث له ثلاثة أضلاع وثلاث زوايا. هل تريد أن أعيد شرح أي شكل؟", function() {
+            setTimeout(() => {
+              speak("قل 'دائرة' أو 'مربع' أو 'مستطيل' أو 'مثلث' لسماع شرح مفصل أكثر عن أي شكل.");
+            }, 1000);
+          });
+          break;
+        case 2:
+          speak("بدأت الدرس الثاني: الألوان وملمس الأشياء. الأحمر لون دافئ مثل لون التفاح. الأزرق لون بارد مثل لون السماء. الأخضر لون الطبيعة مثل لون العشب. الأصفر لون مشرق مثل لون الشمس. القطن ملمسه ناعم. الحجر ملمسه خشن. الزجاج ملمسه أملس. الورق رمزه خشن قليلاً. هل تريد أن أعيد شرح أي لون أو ملمس؟");
+          break;
+        case 3:
+          speak("بدأت الدرس الثالث: الاتجاهات والمواقع. الأعلى هو اتجاه نحو السماء. الأسفل هو اتجاه نحو الأرض. اليمين هو اتجاه جهة اليد التي تكتب بها. اليسار هو اتجاه الجهة المعاكسة لليمين. الأمام هو ما يواجهك. الخلف هو ما وراءك. الداخل هو اتجاه نحو مركز المكان. الخارج هو اتجاه بعيدًا عن المركز. هل تريد أن أعيد شرح أي اتجاه؟");
+          break;
+      }
+    }
+    
+    // وظائف المساعد الذكي
+    function startAIConversation() {
+      speak("مرحبًا، أنا المساعد الذكي. كيف يمكنني مساعدتك في التعلم اليوم؟", function() {
+        let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = "ar-SA";
+        
+        recognition.onresult = function(event) {
+          let userSpeech = event.results[0][0].transcript;
+          addToConversation(userSpeech, 'user');
+          
+          // معالجة استفسار المستخدم والرد عليه
+          processAIQuery(userSpeech);
+        };
+        
+        recognition.onerror = function(event) {
+          speak("عذرًا، لم أستطع فهم ما قلته. هل يمكنك التكرار؟");
+        };
+        
+        recognition.start();
+      });
+    }
+    
+    function processAIQuery(query) {
+      // عرض مؤشر الكتابة
+      document.getElementById('typing').style.display = 'block';
+      
+      // محاكاة وقت معالجة الاستفسار
+      setTimeout(() => {
+        document.getElementById('typing').style.display = 'none';
+        
+        let response = generateAIResponse(query);
+        addToConversation(response, 'ai');
+        speak(response);
+      }, 1500);
+    }
+    
+    function generateAIResponse(query) {
+      query = query.toLowerCase();
+      
+      // قاعدة معارف للمساعد الذكي
+      if (query.includes("شكل") || query.includes("أشكال")) {
+        return "الأشكال الهندسية الأساسية هي: الدائرة، المربع، المستطيل، والمثلث. الدائرة ليس لها زوايا، المربع له أربعة أضلاع متساوية، المستطيل له أربعة أضلاع ولكن الضلعان المتقابلان متساويان، والمثلث له ثلاثة أضلاع. هل تريد معرفة المزيد عن شكل محدد؟";
+      }
+      else if (query.includes("دائرة")) {
+        return "الدائرة هي شكل مستدير ليس له بداية ولا نهاية. كل نقطة على حافة الدائرة تبعد المسافة نفسها عن المركز. أمثلة على الأشكال الدائرية: العملة المعدنية، العجلة، الطبق.";
+      }
+      else if (query.includes("مربع")) {
+        return "المربع له أربعة أضلاع متساوية في الطول وأربع زوايا قائمة (90 درجة). جميع أضلاع المربع متساوية. أمثلة على الأشكال المربعة: النافذة، علبة الهدايا، البلاط.";
+      }
+      else if (query.includes("مستطيل")) {
+        return "المستطيل له أربعة أضلاع وأربع زوايا قائمة. الضلعان المتقابلان متساويان في الطول ولكن ليس بالضرورة أن تكون جميع الأضلاع متساوية. أمثلة على المستطيلات: الباب، الكتاب، الشاشة.";
+      }
+      else if (query.includes("مثلث")) {
+        return "المثلث له ثلاثة أضلاع وثلاث زوايا. هناك عدة أنواع من المثلثات: متساوي الأضلاع، متساوي الساقين، وقائم الزاوية. أمثلة على المثلثات: سقف المنزل، علامة المرور، رأس السهم.";
+      }
+      else if (query.includes("لون") || query.includes("ألوان")) {
+        return "الألوان تساعدنا على تمييز الأشياء. الأحمر، الأزرق، الأصفر، والأخضر هي ألوان أساسية. الأحمر لون دافئ، الأزرق لون بارد، الأصفر لون مشرق، والأخضر لون مريح. هل تريد معرفة المزيد عن لون محدد؟";
+      }
+      else if (query.includes("اتجاه") || query.includes("اتجاهات")) {
+        return "الاتجاهات الأساسية هي: الأعلى، الأسفل، اليمين، اليسار، الأمام، والخلف. تساعدنا الاتجاهات على التنقل ووصف مواقع الأشياء. هل تريد معرفة المزيد عن اتجاه محدد؟";
+      }
+      else if (query.includes("مساعدة") || query.includes("مساعدة")) {
+        return "يمكنني مساعدتك في شرح الدروس والإجابة على أسئلتك حول الأشكال، الألوان، والاتجاهات. يمكنك أيضًا أن تطلب مني فتح قائمة الدروس أو العودة إلى الصفحة الرئيسية. كيف يمكنني مساعدتك؟";
+      }
+      else if (query.includes("شكر") || query.includes("شكرا")) {
+        return "على الرحب والسعة! أنا هنا لمساعدتك دائمًا. هل هناك شيء آخر تريد معرفته؟";
+      }
+      else {
+        return "عذرًا، لم أفهم سؤالك تمامًا. يمكنني مساعدتك في مواضيع الأشكال، الألوان، والاتجاهات. هل يمكنك إعادة صياغة سؤالك؟";
+      }
+    }
+    
+    function addToConversation(text, sender) {
+      const conversationDiv = document.getElementById('conversation');
+      const msgDiv = document.createElement('div');
+      msgDiv.classList.add(sender === 'user' ? 'user-msg' : 'ai-msg');
+      msgDiv.textContent = text;
+      conversationDiv.appendChild(msgDiv);
+      
+      // التمرير إلى أحدث رسالة
+      conversationDiv.scrollTop = conversationDiv.scrollHeight;
+    }
+    
+    function clearConversation() {
+      const conversationDiv = document.getElementById('conversation');
+      conversationDiv.innerHTML = '<div class="ai-msg">مرحبًا! أنا مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟</div>';
+      speak("تم مسح المحادثة. كيف يمكنني مساعدتك؟");
+    }
+    
+    // جعل الأزرار قابلة للوصول بواسطة لوحة المفاتيح
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            this.click();
+          }
+        });
+      });
+      
+      // ترحيب تلقائي عند تحميل الصفحة
+      setTimeout(() => {
+        startWelcome();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
